@@ -24,7 +24,7 @@ const Home = () => (
 
         </div>
         <div className="svgdeveloper">
-          <img src="src\assets\perfilghibli.png" alt="developer" />
+          <img src="assets\perfilghibli.png" alt="developer" />
           
         </div> 
       </section>
@@ -36,7 +36,7 @@ const Home = () => (
 
       <section className="section-dos">
         <div className="svgimg2">
-          <img src="src\assets\undraw_version-control_e4yu.svg" alt="developer" />
+          <img src="assets\undraw_version-control_e4yu.svg" alt="developer" />
           
         </div>
         <div>
