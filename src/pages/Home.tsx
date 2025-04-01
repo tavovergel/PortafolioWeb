@@ -1,6 +1,6 @@
-import React from "react";
+
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
+
 import Divisor from "../components/Division"
 import '@fontsource/roboto/300.css';
 
