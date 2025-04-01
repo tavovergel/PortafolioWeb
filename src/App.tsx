@@ -1,7 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
+import '@fontsource/roboto';
 
 import './App.css';
+
 import Navbar from "./components/Navbar"; 
 import Footert from "./components/Footert";
 import Home from "./pages/Home.tsx"; 

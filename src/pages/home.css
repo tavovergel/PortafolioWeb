@@ -1,3 +1,5 @@
+
+
 .home-container {
     min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la pantalla */
     display: flex;
@@ -20,9 +22,24 @@
     height: 30rem;
   }
 
+  .section-dos {
+    
+    display: flex;
+    align-items: left;
+    justify-items: space-between;
+    padding: 10% 1%;
+    gap: 5rem;
+    
+  }
+  .section-dos p{
+    font-family: 'Roboto', sans-serif;;
+    font-size: 1.5rem;
+  }
   .svgimg2 img{
     border-radius: 4%;
-    width: 20rem;
+    width: 40rem;
     height: auto;
   }
+
+  
   
