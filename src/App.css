@@ -1,9 +1,26 @@
-body {
+/* Asegura que todo el documento use flexbox */
+html, body {
   margin: 0;
-  background: #222;
+  padding: 0;
+  height: 100%;
   display: flex;
-  color: #fff;
-  font-family: Arial, sans-serif;
-  min-height: 100vh;
-  padding-top: 70px;
+  flex-direction: column;
 }
+
+/* Contenedor principal que ocupa toda la pantalla */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Hace que el contenido principal crezca y empuje el footer hacia abajo */
+.main-content {
+  flex: 1;
+}
+
+
+
+
+
+  

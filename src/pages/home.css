@@ -1,0 +1,28 @@
+.home-container {
+    min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la pantalla */
+    display: flex;
+    flex-direction: column; /* Elementos verticales */
+    background-color: #f2f2f2;
+    
+  }
+  
+  .section-uno {
+    display: flex;
+    align-items: center;
+    padding: 10% 1%;
+    justify-content: space-around;
+    flex-grow: 1;
+  }
+  
+  .svgdeveloper img {
+    border-radius: 4%;
+    width: auto;
+    height: 30rem;
+  }
+
+  .svgimg2 img{
+    border-radius: 4%;
+    width: 20rem;
+    height: auto;
+  }
+  

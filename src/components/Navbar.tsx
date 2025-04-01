@@ -5,8 +5,8 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa"; // Importa 
 const Navbar = () => {
   return (
     <nav className="navbar">
-      {/* Logo */}
-      <div className="logo">MiLogo</div>
+      {/* Logo de marca */}
+      <div className="logo">VergelDev</div>
 
       {/* Menú */}
       <div className="menu">

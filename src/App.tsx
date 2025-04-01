@@ -1,25 +1,24 @@
-
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Usamos Routes y Route
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
 
-//Importando el CSS
-import './App.css'; 
-
-// Importando los componentes
+import './App.css';
 import Navbar from "./components/Navbar"; 
+import Footert from "./components/Footert";
 import Home from "./pages/Home.tsx"; 
-
 
 const App = () => (
   <Router>
-    {/* este componente fuera del routes esta en todas las paginas*/}
-    <Navbar /> {/* Aquí se incluye el Navbar en la parte superior */}
-    
-    <Routes>
-      {/* Aquí se define cada una de las rutas de mi proyecto */}
-      <Route path="/" element={<Home />} />
+    <div id="root"> 
+      <Navbar />
       
-    </Routes>
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </main>
+
+      <Footert />
+    </div>
   </Router>
 );
 
