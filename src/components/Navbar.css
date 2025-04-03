@@ -1,56 +1,97 @@
+/* 📌 Estilos generales del navbar */
 .navbar {
-    background-color: black;
-    color: rgb(255, 255, 255);
-    display: flex; 
-    justify-content: space-around;
-    align-items: center;
-    position:fixed;
-    height: 60px;
-    width: 100%;
-    padding: 15px 30px;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-  }
-  
-  
-  .logo {
-    font-size: 26px;
-    font-weight: bold;
-    text-shadow: #868686 0.5px 0.5px;
-  }
-  
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  padding: 15px 30px;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+  text-shadow: #868686 0.5px 0.5px;
+}
+
+/* Menú (pantallas grandes) */
+.menu {
+  display: flex;
+  gap: 30px;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+}
+
+.menu a:hover {
+  background-color: #ff9800;
+  border-radius: 5px;
+}
+
+/* 📌 Íconos sociales */
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #ff9800;
+}
+
+/* Botón hamburguesa */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
   .menu {
-    display: flex;
-    gap: 30px;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    text-align: center;
+    padding: 15px 0;
   }
-  
+
+  .menu.open {
+    display: flex;
+  }
+
   .menu a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 8px 12px;
-    transition: all 0.3s ease;
+    display: block;
+    padding: 10px;
   }
-  
-  .menu a:hover {
-    background-color: #ff9800;
-    border-radius: 5px;
+
+  .menu-toggle {
+    display: block;
   }
-  
+
   .social-icons {
-    display: flex;
-    gap: 20px;
-    margin-right: 60px;
+    display: none; 
   }
-  
-  .social-icons a {
-    color: white;
-    font-size: 22px;
-    transition: transform 0.3s ease;
-  }
-  
-  .social-icons a:hover {
-    transform: scale(1.2);
-    color: #ff9800;
-  }
+}

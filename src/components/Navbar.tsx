@@ -1,21 +1,29 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "./Navbar.css"; // Importa los estilos globales
-import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa"; // Importa los iconos
+import { FaFacebook, FaInstagram, FaTwitter, FaBars, FaTimes } from "react-icons/fa";
+import "./Navbar.css"; 
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <nav className="navbar">
-      {/* Logo de marca */}
+      {/* Logo */}
       <div className="logo">VergelDev</div>
 
-      {/* Menú */}
-      <div className="menu">
-        <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>Inicio</NavLink>
-        <NavLink to="/projects" className={({ isActive }) => (isActive ? "active" : "")}>Proyectos</NavLink>
-        <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>Contacto</NavLink>
+      {/* Botón de menú hamburguesa */}
+      <div className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? <FaTimes /> : <FaBars />}
       </div>
 
-      {/* Redes Sociales */}
+      {/* Menú principal */}
+      <div className={`menu ${menuOpen ? "open" : ""}`}>
+        <NavLink to="/" onClick={() => setMenuOpen(false)}>Inicio</NavLink>
+        <NavLink to="/projects" onClick={() => setMenuOpen(false)}>Proyectos</NavLink>
+        <NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contacto</NavLink>
+      </div>
+
+      {/* Redes sociales */}
       <div className="social-icons">
         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
           <FaFacebook />
@@ -32,6 +40,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 
 
 
