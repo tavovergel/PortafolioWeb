@@ -41,7 +41,7 @@ const Home = () => {
       {/* Sección Sobre Mí */}
       <section className="section-dos">
         <div className="svgimg2">
-          <img src="public\assets\Code typing-bro.svg" alt="developer" />
+        <img src="/assets/Code typing-bro.svg" alt="developer" />
         </div>
       </section>
 
