@@ -5,8 +5,11 @@ const Footert = () => {
   return (
     <footer className="footert">
       <div className="footer-content">
-        <h1>Hablemos!</h1>
+        
         <div className="logo-footer">VergelDev</div>
+      </div>
+      <div className="footer-content">
+        <p>Todos los derechos reservados.</p>
       </div>
     </footer>
   );

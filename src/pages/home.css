@@ -26,28 +26,42 @@
   height: auto;
 }
 
-/* Sección 2 */
 .section-dos {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 5% 2%;
-  gap: 3rem;
+  text-align: center;
+  padding: 15px;
 }
-
-.section-dos p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.5rem;
-  max-width: 600px; /* Para que no se extienda demasiado */
-}
-
 .svgimg2 img {
   border-radius: 4%;
-  width: 100%;
-  max-width: 40rem;
+  width: 40%; 
   height: auto;
 }
+
+.textuno {
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  min-height: 35rem;
+  background-color: rgb(248, 150, 81);
+  text-align: center; 
+  padding: 1rem; 
+  font-family: 'Raleway', sans-serif;
+}
+
+/*contenido de la seccion es decir el texto*/
+.textuno p {
+  
+  max-width: 800px; /* Aumenta este valor si quieres más ancho */
+  margin: 0 auto;
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+.textgrande{
+  font-size: 1.4rem;
+}
+
+
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
