@@ -6,9 +6,12 @@ import App from './App.tsx'
 import './App.css'
 import '../src/index.css';
 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // renderizamos el componente app llamado root
   <React.StrictMode>
+    
     <App />
+    
   </React.StrictMode>,
 )

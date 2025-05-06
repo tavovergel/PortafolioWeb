@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const styles = {
   text: {
-    fontSize: "3.5rem", // Tamaño del texto
+    fontSize: "3.4rem", // Tamaño del texto
     fontWeight: "bold", // Negrita
   },
 };

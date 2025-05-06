@@ -1,7 +1,5 @@
 
 
-
-import Divisor from "../components/Division"
 import '@fontsource/roboto/300.css';
 
 
@@ -12,6 +10,9 @@ import "./home.css"
 //importar componentes de las habilidades 
 import SkillsSection from '../components/SkillsSection';
 import { motion } from "framer-motion";
+
+//importar componentes de los proyectos
+import Demo from '../components/ProjectSection';
 
 
 
@@ -24,7 +25,7 @@ const Home = () => {
         <div>
           <h2>DEVELOPER & INGENIERO DE SOFTWARE </h2>
           <br/>
-          <h3>Apasionado, Me gusta codificar y solucionar cosas sencillas pero maravillosas</h3>
+          <h3>Apasionado, Me gusta codificar y solucionar cosas funcionales pero maravillosas</h3>
           <br/>
           <NombreAnimado />
           <br/>
@@ -69,7 +70,12 @@ const Home = () => {
      
       {/* Sección Habilidades */}
       <SkillsSection/>
+
+      {/* Sección proyectos */}
+      <Demo/>
     </div>
+
+    
   );
 };
 

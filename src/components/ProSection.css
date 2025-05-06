@@ -1,0 +1,131 @@
+.portfolio-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .portfolio-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .portfolio-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #666;
+  }
+  
+  .portfolio-section a {
+    color: rgba(210, 105, 30);
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .card {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+    aspect-ratio: 4/3;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+  }
+  
+  .card-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    transition: all 0.3s ease;
+    width: 90%;
+  }
+  
+  .card-hover-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: white;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  .card:hover .card-hover-content {
+    opacity: 1;
+  }
+  
+  .card:hover .card-title {
+    opacity: 0;
+  }
+  
+  .hover-main-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .hover-main-text div {
+    line-height: 1.2;
+  }
+  
+  .hover-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  
+  .hover-tag {
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .portfolio-section {
+      flex-direction: column;
+      padding: 1rem;
+      text-align: center;
+    }
+}

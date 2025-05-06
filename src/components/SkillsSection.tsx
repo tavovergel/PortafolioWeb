@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {FaHtml5,FaCss3Alt,FaJs,FaWordpress,FaReact,FaNodeJs,FaPython,FaJava,FaDatabase,FaGithub,FaBootstrap, FaCloud} from "react-icons/fa";
 import {SiMongodb,SiSalesforce} from "react-icons/si";
 import { ArchitectureGroupAWSCloudlogo } from 'aws-react-icons';
@@ -10,7 +11,6 @@ const skillsFront = [
   { name: "JavaScript", icon: <FaJs className="skill-icon" /> },
   { name: "React", icon: <FaReact className="skill-icon" /> },
   { name: "Bootstrap", icon: <FaBootstrap className="skill-icon" /> },
-
 ];
 
 const skillsBack = [
@@ -21,64 +21,136 @@ const skillsBack = [
   { name: "MongoDB", icon: <SiMongodb className="skill-icon" /> },
 ];
 
-const skillsother = [
+const skillsOther = [
   { name: "Git Hub", icon: <FaGithub className="skill-icon" /> },
   { name: "Wordpress", icon: <FaWordpress className="skill-icon" /> },
   { name: "Salesforce", icon: <SiSalesforce className="skill-icon" /> },
   { name: "AWS", icon: <ArchitectureGroupAWSCloudlogo size={62} className="skill-icon" /> },
   { name: "Azure", icon: <FaCloud size={62} className="skill-icon" /> },
-    
-  
-]
+];
 
 export default function SkillsSection() {
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+
+  const toggleCategory = (category: string) => {
+    setActiveCategory(activeCategory === category ? null : category);
+  };
+
   return (
-    
     <section className="skills-section">
-      
-      {/* Sección de habilidades a la izquierda */}
-      <div className="skills-container">
-        <h1>FRONTEND</h1>
-        {skillsFront.map((skill, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ scale: 1.1, x: 10 }}
-            className="skill-card"
-          >
-            <div className="skill-icon">{skill.icon}</div>
-            <p>{skill.name}</p>
-          </motion.div>
-        ))}
+      {/* Versión desktop (se muestra en pantallas grandes) */}
+      <div className="desktop-skills">
+        <div className="skills-container">
+          <h1>FRONTEND</h1>
+          {skillsFront.map((skill, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.1, x: 10 }}
+              className="skill-card"
+            >
+              <div className="skill-icon">{skill.icon}</div>
+              <p>{skill.name}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="skills-container">
+          <h1>BACKEND</h1>
+          {skillsBack.map((skill, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.1, x: 10 }}
+              className="skill-card"
+            >
+              <div className="skill-icon">{skill.icon}</div>
+              <p>{skill.name}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="skills-container">
+          <h1>PLATAFORMAS</h1>
+          {skillsOther.map((skill, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.1, x: 10 }}
+              className="skill-card"
+            >
+              <div className="skill-icon">{skill.icon}</div>
+              <p>{skill.name}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
 
-      <div className="skills-container">
-      <h1>BACKEND</h1>
-        {skillsBack.map((skill, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ scale: 1.1, x: 10 }}
-            className="skill-card"
-          >
-            <div className="skill-icon">{skill.icon}</div>
-            <p>{skill.name}</p>
-          </motion.div>
-        ))}
-      </div>
+      {/* Versión móvil (acordeón) */}
+      <div className="mobile-skills">
+        <div 
+          className={`skill-category ${activeCategory === 'frontend' ? 'active' : ''}`}
+          onClick={() => toggleCategory('frontend')}
+        >
+          <div className="skill-category-title">
+            <h1>FRONTEND</h1>
+            <span className="toggle-icon">{activeCategory === 'frontend' ? '-' : '+'}</span>
+          </div>
+          <div className="skill-category-content">
+            {skillsFront.map((skill, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                className="skill-card"
+              >
+                <div className="skill-icon">{skill.icon}</div>
+                <p>{skill.name}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
 
-      <div className="skills-container">
-      <h1>PLATAFORMAS</h1>
-        {skillsother.map((skill, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ scale: 1.1, x: 10 }}
-            className="skill-card"
-          >
-            <div className="skill-icon">{skill.icon}</div>
-            <p>{skill.name}</p>
-          </motion.div>
-        ))}
+        <div 
+          className={`skill-category ${activeCategory === 'backend' ? 'active' : ''}`}
+          onClick={() => toggleCategory('backend')}
+        >
+          <div className="skill-category-title">
+            <h1>BACKEND</h1>
+            <span className="toggle-icon">{activeCategory === 'backend' ? '-' : '+'}</span>
+          </div>
+          <div className="skill-category-content">
+            {skillsBack.map((skill, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                className="skill-card"
+              >
+                <div className="skill-icon">{skill.icon}</div>
+                <p>{skill.name}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <div 
+          className={`skill-category ${activeCategory === 'platforms' ? 'active' : ''}`}
+          onClick={() => toggleCategory('platforms')}
+        >
+          <div className="skill-category-title">
+            <h1>PLATAFORMAS</h1>
+            <span className="toggle-icon">{activeCategory === 'platforms' ? '-' : '+'}</span>
+          </div>
+          <div className="skill-category-content">
+            {skillsOther.map((skill, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.05 }}
+                className="skill-card"
+              >
+                <div className="skill-icon">{skill.icon}</div>
+                <p>{skill.name}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
-      
     </section>
   );
 }
