@@ -1,78 +1,93 @@
-import React from 'react';
-import './ProSection.css';
+import React from "react";
+import { motion } from "framer-motion";
+import "./ProSection.css";
 
 interface Project {
   title: string;
   image: string;
   description: string;
   url: string;
-  hoverTech?: string; // Nueva propiedad para la tecnología
-  hoverTag?: string;   // Nueva propiedad para el tag
+  hoverTech?: string;
+  hoverTag?: string;
 }
 
 const projects: Project[] = [
   {
-    title: 'Tickets para conciertos',
-    image: '/assets/concierto.png',
-    description: 'Sistema de venta de tickets para eventos musicales',
-    url: 'http://54.167.62.3/ ',
-    hoverTech: 'Angular 19',
-    hoverTag: 'E-COMMERCE'
+    title: "Tickets para conciertos",
+    image: "/assets/concierto.png",
+    description: "Sistema de venta de tickets para eventos musicales.",
+    url: "https://portafolio-web-three-alpha.vercel.app/",
+    hoverTech: "Angular 19",
+    hoverTag: "E-COMMERCE",
   },
   {
-    title: 'BIOTAR SAS',
-    image: '/assets/biotar.png',
-    description: 'Sitio web tratamiento de aguas residuales',
-    url: 'https://biotarsk.com',
-    hoverTech: 'Wordpress',
-    hoverTag: 'CORPORATIVO'
+    title: "BIOTAR SAS",
+    image: "/assets/biotar.png",
+    description: "Sitio web corporativo para tratamiento de aguas residuales.",
+    url: "https://biotarsk.com",
+    hoverTech: "WordPress",
+    hoverTag: "CORPORATIVO",
   },
   {
-    title: 'COUNTRYHOME',
-    image: '/assets/country.jpeg',
-    description: 'Plataforma de ventas de lotes',
-    url: 'https://country-home.vercel.app/',
-    hoverTech: 'Html,Css, Javascript',
-    hoverTag: 'Ventas'
+    title: "COUNTRYHOME",
+    image: "/assets/country.jpeg",
+    description: "Plataforma de ventas de lotes y terrenos.",
+    url: "https://country-home.vercel.app/",
+    hoverTech: "HTML, CSS, JavaScript",
+    hoverTag: "VENTAS",
   },
 ];
 
 const ProSection: React.FC = () => {
   const handleCardClick = (url: string) => {
-    window.open(url, '_blank');
+    window.open(url, "_blank");
   };
 
   return (
     <section className="portfolio-section">
-      <h2>Proyectos Recientes</h2>
-      <p>
-        Algunos de mis proyectos destacados{' '}
-        <a href="mailto:vergeldev7@gmail.com">Enviame un Email</a>
-      </p>
+      <motion.h2
+        className="portfolio-title"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
+        🚀 Proyectos Recientes
+      </motion.h2>
 
-      <div className="grid">
+      <motion.p
+        className="portfolio-subtitle"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+      >
+        Algunos de mis proyectos destacados.{" "}
+        <a href="mailto:vergeldev7@gmail.com">Contáctame por email</a> 📩
+      </motion.p>
+
+      <div className="projects-grid">
         {projects.map((project, idx) => (
-          <div
+          <motion.div
             key={idx}
-            className="card"
+            className="project-card"
             onClick={() => handleCardClick(project.url)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.2 }}
           >
-            <div className="card-image-container">
+            <div className="project-image-wrapper">
               <img src={project.image} alt={project.title} />
-              <div className="card-title">{project.title}</div>
-              <div className="card-hover-content">
-                <div className="hover-main-text">
-                  {project.hoverTech && <div>{project.hoverTech}</div>}
-                </div>
-                <div className="hover-description">
-                  {project.description}
-                </div>
-                {project.hoverTag && (
-                  <div className="hover-tag">{project.hoverTag}</div>
-                )}
+              <div className="project-overlay">
+                <div className="overlay-tech">{project.hoverTech}</div>
+                <div className="overlay-tag">{project.hoverTag}</div>
               </div>
             </div>
-          </div>
+            <div className="project-info">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+            </div>
+          </motion.div>
         ))}
       </div>
     </section>

@@ -4,7 +4,7 @@
   min-height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la pantalla */
   display: flex;
   flex-direction: column; /* Elementos en columna */
-  background-color: #f2f2f2;
+  background-color: transparent;;
   padding: 2rem;
 }
 
@@ -14,26 +14,15 @@
   align-items: center;
   justify-content: space-around;
   flex-grow: 1;
-  flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas pequeñas */
+  flex-wrap: wrap;
   padding: 5% 2%;
   text-align: center;
 }
 
 .svgdeveloper img {
-  border-radius: 4%;
+  border-radius: 3%;
   width: 100%;
   max-width: 30rem;
-  height: auto;
-}
-
-.section-dos {
-  align-items: center;
-  text-align: center;
-  padding: 15px;
-}
-.svgimg2 img {
-  border-radius: 4%;
-  width: 40%; 
   height: auto;
 }
 
@@ -44,8 +33,17 @@
   min-height: 35rem;
   background-color: rgb(248, 150, 81);
   text-align: center; 
-  padding: 1rem; 
-  font-family: 'Raleway', sans-serif;
+  padding: 1rem;
+}
+
+.sectionDos {
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  min-height: 35rem;
+  background-color: rgb(248, 150, 81);
+  text-align: center; 
+  padding: 1rem;
 }
 
 /*contenido de la seccion es decir el texto*/
