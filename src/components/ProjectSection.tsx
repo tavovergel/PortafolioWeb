@@ -61,7 +61,7 @@ const ProSection: React.FC = () => {
         transition={{ delay: 0.3 }}
       >
         Algunos de mis proyectos destacados.{" "}
-        <a href="mailto:vergeldev7@gmail.com">Contáctame por email</a> 📩
+        
       </motion.p>
 
       <div className="projects-grid">

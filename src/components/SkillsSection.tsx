@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import {FaHtml5,FaCss3Alt,FaJs,FaWordpress,FaReact,FaNodeJs,FaPython,FaJava,FaDatabase,FaGithub,FaBootstrap, FaCloud} from "react-icons/fa";
-import {SiMongodb,SiSalesforce} from "react-icons/si";
-import { ArchitectureGroupAWSCloudlogo } from 'aws-react-icons';
+import {FaHtml5,FaCss3Alt,FaJs,FaWordpress,FaReact,FaNodeJs,FaPython,FaJava,FaDatabase,FaGithub,FaFileExcel,FaCloud} from "react-icons/fa";
+import { MdOutlineDataThresholding } from "react-icons/md";
+import {SiRstudioide,SiSalesforce} from "react-icons/si";
+import { TfiMicrosoftAlt } from "react-icons/tfi";
 import { motion } from "framer-motion";
 import "./SkillsSection.css"; 
 
@@ -10,7 +11,7 @@ const skillsFront = [
   { name: "CSS", icon: <FaCss3Alt className="skill-icon" /> },
   { name: "JavaScript", icon: <FaJs className="skill-icon" /> },
   { name: "React", icon: <FaReact className="skill-icon" /> },
-  { name: "Bootstrap", icon: <FaBootstrap className="skill-icon" /> },
+
 ];
 
 const skillsBack = [
@@ -18,15 +19,21 @@ const skillsBack = [
   { name: "Python", icon: <FaPython className="skill-icon" /> },
   { name: "Java", icon: <FaJava className="skill-icon" /> },
   { name: "SQL", icon: <FaDatabase className="skill-icon" /> },
-  { name: "MongoDB", icon: <SiMongodb className="skill-icon" /> },
 ];
 
 const skillsOther = [
   { name: "Git Hub", icon: <FaGithub className="skill-icon" /> },
   { name: "Wordpress", icon: <FaWordpress className="skill-icon" /> },
   { name: "Salesforce", icon: <SiSalesforce className="skill-icon" /> },
-  { name: "AWS", icon: <ArchitectureGroupAWSCloudlogo size={62} className="skill-icon" /> },
-  { name: "Azure", icon: <FaCloud size={62} className="skill-icon" /> },
+  
+  { name: "Azure", icon: <FaCloud size={38} className="skill-icon" /> },
+];
+
+const skillsData = [
+  { name: "Excel", icon: <FaFileExcel className="skill-icon" /> },
+  { name: "Power BI", icon: <MdOutlineDataThresholding className="skill-icon" /> },
+  { name: "Power Apps", icon: <TfiMicrosoftAlt className="skill-icon" /> },
+  { name: "RStudio", icon: <SiRstudioide  className="skill-icon" /> },
 ];
 
 export default function SkillsSection() {
@@ -37,7 +44,18 @@ export default function SkillsSection() {
   };
 
   return (
+
+    
     <section className="skills-section">
+      {/* ✨ Título general */}
+      <motion.h1
+        className="skills-title"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        Habilidades Técnicas
+      </motion.h1>
       {/* Versión desktop (se muestra en pantallas grandes) */}
       <div className="desktop-skills">
         <div className="skills-container">
@@ -71,6 +89,20 @@ export default function SkillsSection() {
         <div className="skills-container">
           <h1>PLATAFORMAS</h1>
           {skillsOther.map((skill, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.1, x: 10 }}
+              className="skill-card"
+            >
+              <div className="skill-icon">{skill.icon}</div>
+              <p>{skill.name}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="skills-container">
+          <h1>ANALISIS DE DATOS</h1>
+          {skillsData.map((skill, index) => (
             <motion.div
               key={index}
               whileHover={{ scale: 1.1, x: 10 }}

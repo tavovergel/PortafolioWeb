@@ -1,6 +1,5 @@
 
 import '@fontsource/roboto/300.css';
-import { motion } from "framer-motion";
 
 import SkillsSection from '../components/SkillsSection';
 import Demo from '../components/ProjectSection';
@@ -16,14 +15,10 @@ const Home = () => {
     <div>
       <ParticulasBack /> {/* 👈 Componente de partículas de fondo y header */}
 
-      <div>
-      <SectionDos />
-      </div>
-
-      <SkillsSection />
+      <SkillsSection />{/* 👈 Componente de Habilidades */}
       <Demo />
 
-      <ContactSection />
+      <ContactSection />{/* 👈 Componente de Contacto */}
 
     </div>
   );

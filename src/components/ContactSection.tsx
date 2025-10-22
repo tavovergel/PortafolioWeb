@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaUser, FaCommentDots } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 import "./ContactSection.css";
 
 const ContactSection: React.FC = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false); // 🔹 Estado de carga
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -12,8 +14,24 @@ const ContactSection: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("📨 Gracias por tu mensaje, te contactaré pronto.");
-    setForm({ name: "", email: "", message: "" });
+    setLoading(true); // 🔹 Activar loading
+
+    emailjs
+      .send(
+        "service_wdz0s5w",     // 🔸 Tu Service ID
+        "template_qm16ig3",    // 🔸 Tu Template ID
+        form,                  // 🔸 Datos del formulario
+        "FfqoHPfht2RF5nXP_"    // 🔸 Tu Public Key
+      )
+      .then(() => {
+        alert("📨 ¡Mensaje enviado con éxito! Te contactaré pronto.");
+        setForm({ name: "", email: "", message: "" });
+      })
+      .catch((error) => {
+        console.error("Error al enviar el mensaje:", error);
+        alert("❌ No se pudo enviar el mensaje. Intenta nuevamente.");
+      })
+      .finally(() => setLoading(false)); // 🔹 Desactivar loading
   };
 
   return (
@@ -41,6 +59,7 @@ const ContactSection: React.FC = () => {
               value={form.name}
               onChange={handleChange}
               required
+              disabled={loading} // 🔹 Bloquear inputs mientras se envía
             />
           </div>
 
@@ -53,6 +72,7 @@ const ContactSection: React.FC = () => {
               value={form.email}
               onChange={handleChange}
               required
+              disabled={loading}
             />
           </div>
 
@@ -64,16 +84,18 @@ const ContactSection: React.FC = () => {
               value={form.message}
               onChange={handleChange}
               required
+              disabled={loading}
             />
           </div>
 
           <motion.button
             type="submit"
-            className="contact-btn"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className={`contact-btn ${loading ? "loading" : ""}`}
+            whileHover={!loading ? { scale: 1.05 } : {}}
+            whileTap={!loading ? { scale: 0.95 } : {}}
+            disabled={loading} // 🔹 Desactivar botón
           >
-            Enviar mensaje
+            {loading ? "Enviando..." : "Enviar mensaje"} {/* 🔹 Texto dinámico */}
           </motion.button>
         </form>
       </motion.div>
@@ -82,3 +104,4 @@ const ContactSection: React.FC = () => {
 };
 
 export default ContactSection;
+
