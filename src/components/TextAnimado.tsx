@@ -13,7 +13,7 @@ interface TextAnimadoProps {
   showCursor?: boolean;
   cursorColor?: string;
   className?: string;
-  delay?: number; // 🕐 nuevo: retraso antes de iniciar animación
+  delay?: number; //retraso antes de iniciar animación
 }
 
 const TextAnimado: React.FC<TextAnimadoProps> = ({

@@ -205,6 +205,6 @@
  
   overflow-wrap: break-word;   /* Compatibilidad adicional */
   text-align: center;          /* Asegura buena alineación en móvil */
-  display: block;
+  display: flex;
   max-width: 100%;
 }
