@@ -9,7 +9,6 @@ interface TextAnimadoProps {
   text: string;
   effect?: TextEffect;
   color?: string;
-  fontSize?: string;
   duration?: number; // duración total en segundos
   showCursor?: boolean;
   cursorColor?: string;
@@ -21,7 +20,6 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
   text,
   effect = "typewriter",
   color = "#000000",
-  fontSize = "2rem",
   duration = 2,
   showCursor = true,
   cursorColor = "#000000",
@@ -66,7 +64,6 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
   }, [text, duration, effect, delay]);
 
   const commonStyle: React.CSSProperties = {
-    fontSize,
     color,
     whiteSpace: "nowrap",
     display: "inline-block",
@@ -80,7 +77,7 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
         opacity: 1,
         transition: {
           staggerChildren: 0.05,
-          delayChildren: delay + 0.04 * i, // 🕐 incorpora delay aquí también
+          delayChildren: delay + 0.04 * i,
         },
       }),
     };
@@ -99,7 +96,6 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
         style={{
           overflow: "hidden",
           display: "inline-block",
-          fontSize,
           color,
           whiteSpace: "pre-wrap", // ✅ respeta saltos de línea
         }}
@@ -175,3 +171,4 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
 };
 
 export default TextAnimado;
+

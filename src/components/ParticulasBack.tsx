@@ -81,30 +81,33 @@ const ParticulasBack: React.FC = () => {
               text={`Hola, soy <span class="highlight">Gustavo Vergel Arellano</span>`}
               effect="typewriter"
               color="#1a1a1a"
-              fontSize="2.5rem"
+              
               duration={2}
               showCursor={true}
               cursorColor="#f89651"
               delay={0}
             />
           </h1>
-
-          <TextAnimado
+          <h2 className="hero-Analist">
+            <TextAnimado
             text="Analista de Datos & Ingeniero de Software"
             effect="typewriter"
             color="#1a1a1a"
-            fontSize="1.5rem"
+            
             duration={2}
             showCursor={true}
             cursorColor="#f89651"
             delay={3}
           />
+
+          </h2>
+          
           <p className="hero-description">
           <TextAnimado
             text={`Me apasiona transformar datos en decisiones inteligentes,\ncreando soluciones web funcionales, seguras y visualmente atractivas.`}
             effect="motion-typewriter"
             color="#000000"
-            fontSize="1.3rem"
+            
             duration={6}
             delay={6}
             
@@ -116,7 +119,7 @@ const ParticulasBack: React.FC = () => {
             text={`💬 ¡Hablemos! Estoy aquí para escucharte y crear juntos algo genial.`}
             effect="motion-typewriter"
             color="#000000"
-            fontSize="1.3rem"
+            
             duration={5}
             delay={6}
             
