@@ -9,11 +9,11 @@ interface TextAnimadoProps {
   text: string;
   effect?: TextEffect;
   color?: string;
-  duration?: number; // duración total en segundos
+  duration?: number;
   showCursor?: boolean;
   cursorColor?: string;
   className?: string;
-  delay?: number; //retraso antes de iniciar animación
+  delay?: number;
 }
 
 const TextAnimado: React.FC<TextAnimadoProps> = ({
@@ -53,7 +53,6 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
       }
     };
 
-    // 🕐 aplicar el delay antes de empezar a escribir
     const delayTimeout = window.setTimeout(startTyping, delay * 1000);
     timeoutsRef.current.push(delayTimeout);
 
@@ -63,10 +62,14 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
     };
   }, [text, duration, effect, delay]);
 
+  // 🔹 🔧 Ajustes responsivos (cambios clave)
   const commonStyle: React.CSSProperties = {
     color,
-    whiteSpace: "nowrap",
-    display: "inline-block",
+    whiteSpace: "normal", // ✅ permite ajuste de línea
+    display: "inline", // ✅ evita bloque rígido
+    wordBreak: "break-word",
+    overflowWrap: "break-word",
+    maxWidth: "100%",
   };
 
   // 🔹 Efecto motion-typewriter (Framer Motion)
@@ -97,7 +100,10 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
           overflow: "hidden",
           display: "inline-block",
           color,
-          whiteSpace: "pre-wrap", // ✅ respeta saltos de línea
+          whiteSpace: "pre-wrap", // ✅ mantiene saltos de línea
+          wordBreak: "break-word",
+          overflowWrap: "break-word",
+          maxWidth: "100%",
         }}
         variants={container}
         initial="hidden"
@@ -113,8 +119,11 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
   };
 
   return (
-    <div className={`text-animado ${className}`} style={commonStyle}>
-      {/* TYPEWRITER (clásico) */}
+    <div
+      className={`text-animado break-words whitespace-normal ${className}`}
+      style={commonStyle}
+    >
+      {/* TYPEWRITER */}
       {effect === "typewriter" && (
         <>
           <span dangerouslySetInnerHTML={{ __html: displayText }} />
@@ -136,7 +145,7 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
           <motion.span
             initial={{ width: 0 }}
             animate={{ width: "auto" }}
-            transition={{ duration: duration, ease: "linear", delay }}
+            transition={{ duration, ease: "linear", delay }}
             style={{ overflow: "hidden", display: "inline-block" }}
           >
             {text}
@@ -171,4 +180,5 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
 };
 
 export default TextAnimado;
+
 
