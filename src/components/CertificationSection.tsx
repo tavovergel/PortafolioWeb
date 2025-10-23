@@ -18,7 +18,7 @@ const items: NewsItem[] = [
     description:
       "Formación en Arquitectura en la Nube con AWS y la Universidad Sergio Arboleda.",
     date: "Marzo 2024",
-    image: "/images/aws-certificado.jpg",
+    image: "../public/assets/AwsSkill.jpg",
     link: "https://www.credly.com/",
   },
   {

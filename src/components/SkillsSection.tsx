@@ -61,10 +61,10 @@ export default function SkillsSection() {
        <TextAnimado
               text={`Habilidades Técnicas`}
               effect="reveal"
-              color="#f89651"
+              color="#ff7b00"
               
               duration={2}
-              showCursor={false}
+              showCursor={true}
               cursorColor="#f89651"
               delay={0}
             />

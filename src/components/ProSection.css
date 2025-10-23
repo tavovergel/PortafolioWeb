@@ -10,14 +10,14 @@
 .portfolio-title {
   font-size: 2.8rem;
   font-weight: 700;
-  background: linear-gradient(90deg, #f97316, #fb923c);
+  background: linear-gradient(90deg, #ff7b00, #f98e37);
   -webkit-background-clip: text;
   color: transparent;
   margin-bottom: 0.8rem;
 }
 
 .portfolio-subtitle {
-  color: #f97316;
+  color: #ff7b00;
   font-size: 1.2rem;
   margin-bottom: 3rem;
 }
@@ -123,7 +123,7 @@
 /* 📱 Responsivo */
 @media (max-width: 768px) {
   .portfolio-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
   .portfolio-subtitle {
     font-size: 1rem;

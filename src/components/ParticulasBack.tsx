@@ -104,7 +104,7 @@ const ParticulasBack: React.FC = () => {
           
           <p className="hero-description">
           <TextAnimado
-            text={`Me apasiona transformar datos en decisiones inteligentes,\ncreando soluciones web funcionales, seguras y visualmente atractivas.`}
+            text={`Me apasiona transformar datos en decisiones inteligentes, creando soluciones web funcionales, seguras y visualmente atractivas.`}
             effect="motion-typewriter"
             color="#000000"
             
