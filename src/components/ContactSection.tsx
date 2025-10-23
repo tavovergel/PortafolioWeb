@@ -6,7 +6,7 @@ import "./ContactSection.css";
 
 const ContactSection: React.FC = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [loading, setLoading] = useState(false); // 🔹 Estado de carga
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -18,10 +18,10 @@ const ContactSection: React.FC = () => {
 
     emailjs
       .send(
-        "service_wdz0s5w",     // 🔸 Tu Service ID
-        "template_qm16ig3",    // 🔸 Tu Template ID
-        form,                  // 🔸 Datos del formulario
-        "FfqoHPfht2RF5nXP_"    // 🔸 Tu Public Key
+        "service_wdz0s5w",     // Service ID
+        "template_qm16ig3",    // Template ID
+        form,                  // Datos del formulario
+        "FfqoHPfht2RF5nXP_"    // Public Key
       )
       .then(() => {
         alert("📨 ¡Mensaje enviado con éxito! Te contactaré pronto.");
@@ -31,7 +31,7 @@ const ContactSection: React.FC = () => {
         console.error("Error al enviar el mensaje:", error);
         alert("❌ No se pudo enviar el mensaje. Intenta nuevamente.");
       })
-      .finally(() => setLoading(false)); // 🔹 Desactivar loading
+      .finally(() => setLoading(false)); 
   };
 
   return (
@@ -59,7 +59,7 @@ const ContactSection: React.FC = () => {
               value={form.name}
               onChange={handleChange}
               required
-              disabled={loading} // 🔹 Bloquear inputs mientras se envía
+              disabled={loading} // 
             />
           </div>
 

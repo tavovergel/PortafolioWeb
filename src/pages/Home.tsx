@@ -2,12 +2,12 @@
 import '@fontsource/roboto/300.css';
 
 import SkillsSection from '../components/SkillsSection';
-import Demo from '../components/ProjectSection';
-import SectionDos from '../components/SectionDos';  
+import Demo from '../components/ProjectSection'; 
 import ContactSection from '../components/ContactSection';
 // importar el particle
 import ParticulasBack from '../components/ParticulasBack';
 import "./home.css";
+import CertificationSection from '../components/CertificationSection';
 
 
 const Home = () => {
@@ -17,6 +17,7 @@ const Home = () => {
 
       <SkillsSection />{/* 👈 Componente de Habilidades */}
       <Demo />
+      <CertificationSection/>{/* 👈 Componente de Certificaciones */}
 
       <ContactSection />{/* 👈 Componente de Contacto */}
 
