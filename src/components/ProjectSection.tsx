@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./ProSection.css";
 
+
 interface Project {
   title: string;
   image: string;
@@ -44,7 +45,7 @@ const ProSection: React.FC = () => {
   };
 
   return (
-    <section className="portfolio-section">
+    <section id="proyectos"  className="portfolio-section">
       <motion.h2
         className="portfolio-title"
         initial={{ opacity: 0, y: 30 }}

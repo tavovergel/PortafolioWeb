@@ -5,6 +5,7 @@ import {SiRstudioide,SiSalesforce} from "react-icons/si";
 import { TfiMicrosoftAlt } from "react-icons/tfi";
 import { motion } from "framer-motion";
 import "./SkillsSection.css"; 
+import TextAnimado from "./TextAnimado";
 
 const skillsFront = [
   { name: "HTML", icon: <FaHtml5 className="skill-icon" /> },
@@ -48,13 +49,25 @@ export default function SkillsSection() {
     
     <section className="skills-section">
       {/* ✨ Título general */}
+      
+      
       <motion.h1
         className="skills-title"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+         initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
       >
-        Habilidades Técnicas
+        
+       <TextAnimado
+              text={`Habilidades Técnicas`}
+              effect="reveal"
+              color="#f89651"
+              
+              duration={2}
+              showCursor={false}
+              cursorColor="#f89651"
+              delay={0}
+            />
       </motion.h1>
       {/* Versión desktop (se muestra en pantallas grandes) */}
       <div className="desktop-skills">

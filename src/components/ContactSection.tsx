@@ -35,7 +35,7 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section className="contact-section">
+    <section id="contacto" className="contact-section">
       <div className="contact-overlay" />
 
       <motion.div
