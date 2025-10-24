@@ -29,7 +29,7 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
   const [displayText, setDisplayText] = useState("");
   const timeoutsRef = useRef<number[]>([]);
 
-  // 🔹 Efecto clásico de escritura (typewriter)
+  // 🔹 Efecto clásico de escritura (typewriter) — SIN CAMBIOS
   useEffect(() => {
     if (effect !== "typewriter") return;
     timeoutsRef.current.forEach((t) => clearTimeout(t));
@@ -62,24 +62,26 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
     };
   }, [text, duration, effect, delay]);
 
-  // 🔹 🔧 Ajustes responsivos (cambios clave)
+  // 🔹 Estilos generales
   const commonStyle: React.CSSProperties = {
     color,
-    whiteSpace: "normal", // ✅ permite ajuste de línea
-    display: "inline", // ✅ evita bloque rígido
-    wordBreak: "break-word",
+    whiteSpace: "normal",
+    display: "inline",
+    wordBreak: "keep-all", // ✅ evita cortes de palabra
     overflowWrap: "break-word",
     maxWidth: "100%",
   };
 
-  // 🔹 Efecto motion-typewriter (Framer Motion)
+  // 🔹 Efecto motion-typewriter — CORREGIDO
   const MotionTypewriterEffect = () => {
+    // Divide el texto en palabras (no caracteres)
+    const words = text.split(" ");
     const container = {
       hidden: { opacity: 0 },
       visible: (i = 1) => ({
         opacity: 1,
         transition: {
-          staggerChildren: 0.05,
+          staggerChildren: duration ? duration / words.length : 0.05,
           delayChildren: delay + 0.04 * i,
         },
       }),
@@ -91,7 +93,7 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
         y: 0,
         transition: { type: "spring", damping: 12, stiffness: 100 },
       },
-      hidden: { opacity: 0, y: 20 },
+      hidden: { opacity: 0, y: 10 },
     };
 
     return (
@@ -100,8 +102,8 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
           overflow: "hidden",
           display: "inline-block",
           color,
-          whiteSpace: "pre-wrap", // ✅ mantiene saltos de línea
-          wordBreak: "break-word",
+          whiteSpace: "pre-wrap", // ✅ permite saltos de línea naturales
+          wordBreak: "keep-all",
           overflowWrap: "break-word",
           maxWidth: "100%",
         }}
@@ -109,9 +111,13 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
         initial="hidden"
         animate="visible"
       >
-        {text.split("").map((char, index) => (
-          <motion.span key={index} variants={child}>
-            {char === "\n" ? <br /> : char === " " ? "\u00A0" : char}
+        {words.map((word, index) => (
+          <motion.span
+            key={index}
+            variants={child}
+            style={{ display: "inline-block", marginRight: "0.3rem" }}
+          >
+            {word}
           </motion.span>
         ))}
       </motion.div>
@@ -173,12 +179,10 @@ const TextAnimado: React.FC<TextAnimadoProps> = ({
         </motion.span>
       )}
 
-      {/* MOTION TYPEWRITER */}
+      {/* MOTION TYPEWRITER (ahora palabra por palabra) */}
       {effect === "motion-typewriter" && <MotionTypewriterEffect />}
     </div>
   );
 };
 
 export default TextAnimado;
-
-

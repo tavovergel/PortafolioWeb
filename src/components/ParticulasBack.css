@@ -155,14 +155,14 @@
 
   .hero-content {
     gap: 3rem;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     width: 100%;
-    text-align: center;
+    text-align: left;
   }
 
   .hero-text {
     width: 100%;
-    text-align: justify;
+    text-align: left;
     box-sizing: border-box;
     overflow-x: visible;
     
@@ -179,7 +179,7 @@
   .hero-description {
     font-size: 1rem;
     line-height: 1.5;
-    text-align: justify;
+    text-align: left;
     text-justify: inter-word;
     word-break: break-word;
     }

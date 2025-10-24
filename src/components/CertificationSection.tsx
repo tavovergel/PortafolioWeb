@@ -16,20 +16,64 @@ interface NewsItem {
 const CertificationSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
-  // Detectar si es móvil (solo en cliente)
+  // 🧠 Detectar si es móvil (con debounce para evitar lag)
   useEffect(() => {
-    const checkIsMobile = () => setIsMobile(window.innerWidth < 768);
-    checkIsMobile(); // ejecutar al montar
+    let resizeTimer: number;
+    const checkIsMobile = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        setIsMobile(window.innerWidth < 768);
+      }, 200);
+    };
+
+    checkIsMobile();
     window.addEventListener("resize", checkIsMobile);
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
-  const itemsPerView = isMobile ? 1 : 3;
-  const maxIndex = useMemo(() => Math.max(0, items.length - itemsPerView), [items.length, itemsPerView]);
+  // ⚡ Activar carrusel después del montaje
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsReady(true), 150);
+    return () => clearTimeout(timeout);
+  }, []);
 
+  const itemsPerView = isMobile ? 1 : 3;
+  const maxIndex = useMemo(
+    () => Math.max(0, items.length - itemsPerView),
+    [items.length, itemsPerView]
+  );
+
+  // 🚦 Evitar índice fuera de rango si cambia el tamaño de pantalla
+  useEffect(() => {
+    if (currentIndex > maxIndex) setCurrentIndex(maxIndex);
+  }, [maxIndex, currentIndex]);
+
+  // 🧭 Navegación
   const handlePrev = () => setCurrentIndex((prev) => Math.max(0, prev - 1));
   const handleNext = () => setCurrentIndex((prev) => Math.min(maxIndex, prev + 1));
+
+  // 🧱 Renderizar las tarjetas solo una vez
+  const cards = useMemo(
+    () =>
+      items.map((item: NewsItem, index: number) => (
+        <div key={index} className="news-card-dark">
+          <img
+            src={item.image}
+            alt={item.title}
+            className="news-image-dark"
+            loading="lazy"
+          />
+          <div className="news-content-dark">
+            <h3>{item.title}</h3>
+            <p className="news-date-dark">{item.date}</p>
+            <p className="news-desc-dark">{item.description}</p>
+          </div>
+        </div>
+      )),
+    [items]
+  );
 
   return (
     <section className="news-section-dark">
@@ -69,29 +113,18 @@ const CertificationSection: React.FC = () => {
         <div className="slider-wrapper-dark">
           <motion.div
             className="news-grid-dark"
-            animate={{
-              x: isMobile
-                ? `-${currentIndex * 100}%`
-                : `-${currentIndex * (100 / 3)}%`,
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            animate={
+              isReady
+                ? {
+                    x: isMobile
+                      ? `-${currentIndex * 100}%`
+                      : `-${currentIndex * (100 / 3)}%`,
+                  }
+                : {}
+            }
+            transition={{ type: "spring", stiffness: 180, damping: 25 }}
           >
-            {items.map((item: NewsItem, index: number) => (
-              <div key={index} className="news-card-dark">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="news-image-dark"
-                  loading="lazy"
-                />
-                <div className="news-content-dark">
-                  <h3>{item.title}</h3>
-                  <p className="news-date-dark">{item.date}</p>
-                  <p className="news-desc-dark">{item.description}</p>
-                  
-                </div>
-              </div>
-            ))}
+            {cards}
           </motion.div>
         </div>
 
