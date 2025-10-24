@@ -63,7 +63,7 @@ const ParticulasBack: React.FC = () => {
   if (!init) return null;
 
   return (
-    <div className="hero-container">
+    <div id="Home" className="hero-container">
       {/* Fondo de partículas */}
       <Particles
         id="tsparticles"
@@ -90,7 +90,7 @@ const ParticulasBack: React.FC = () => {
           </h1>
           <h2 className="hero-Analist">
             <TextAnimado
-            text="Analista de Datos & Ingeniero de Software"
+            text="Analista de Datos e Ingeniero de Software"
             effect="typewriter"
             color="#1a1a1a"
             

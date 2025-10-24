@@ -143,35 +143,67 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    user-select: none;
   }
 
   .skill-category-title h1 {
     color: #fbbf24;
     font-size: 1.3rem;
     text-shadow: 0 0 5px rgba(251, 191, 36, 0.25);
+    margin: 0;
   }
 
   .toggle-icon {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    font-weight: 300;
     color: #fbbf24;
+    transition: transform 0.3s ease;
   }
 
+  .skill-category.active .toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  /* 🔑 CLAVE: Ocultar el contenido por defecto */
   .skill-category-content {
-    margin-top: 1rem;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;
     justify-content: center;
   }
 
-  .skill-card {
+  /* ✅ Mostrar contenido cuando está activo */
+  .skill-category.active .skill-category-content {
+    max-height: 1000px; /* Valor alto para permitir expansión */
+    opacity: 1;
+    margin-top: 1rem;
+  }
+
+  /* Ajustes de las tarjetas en móvil */
+  .mobile-skills .skill-card {
     flex: 1 1 45%;
     text-align: center;
     justify-content: center;
+    min-width: 120px;
   }
 
-  .skill-card p {
+  .mobile-skills .skill-card p {
     font-size: 0.95rem;
+  }
+
+  .mobile-skills .skill-icon {
+    font-size: 1.8rem;
+  }
+}
+
+/* Tablet y pantallas medianas */
+@media (max-width: 900px) and (min-width: 600px) {
+  .mobile-skills .skill-card {
+    flex: 1 1 30%;
   }
 }
 

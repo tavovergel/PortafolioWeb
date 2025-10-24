@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
 
@@ -7,7 +6,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="navbar">
+    <nav  className="navbar">
       {/* Logo */}
       <div className="logo">Vergel<span>Dev</span></div>
 
@@ -18,7 +17,7 @@ const Navbar = () => {
 
       {/* Enlaces */}
       <div className={`menu ${menuOpen ? "open" : ""}`}>
-        <NavLink to="/" onClick={() => setMenuOpen(false)}>Inicio</NavLink>
+        <a href="#Home" onClick={() => setMenuOpen(false)}>Inicio</a>
         <a href="#proyectos" onClick={() => setMenuOpen(false)}>Proyectos</a>
         <a href="#contacto" onClick={() => setMenuOpen(false)}>Contacto</a>
       </div>

@@ -147,7 +147,7 @@
   }
 }
 
-/* ✅ Ajustes móviles mejorados */
+/* Ajustes móviles mejorados */
 @media (max-width: 767px) {
   .hero-container {
     padding: 1rem;
@@ -162,6 +162,7 @@
 
   .hero-text {
     width: 100%;
+    text-align: justify;
     box-sizing: border-box;
     overflow-x: visible;
     

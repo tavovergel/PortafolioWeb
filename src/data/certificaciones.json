@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Certificación AWS Talento Tech",
+    "description": "Formación en Arquitectura en la Nube con AWS y la Universidad Sergio Arboleda.",
+    "date": "Marzo 2024",
+    "image": "/assets/AwsSkill.jpg",
+    "link": "https://www.credly.com/"
+  },
+  {
+    "title": "Certificación Azure Fundamentals (AZ-900)",
+    "description": "Fundamentos de computación en la nube y servicios principales de Microsoft Azure.",
+    "date": "Febrero 2025",
+    "image": "/assets/AzureCertificado.jpg"
+  },
+  {
+  "title": "Certificación Scrum CERTIPROF",
+  "description": "Certificación que valida competencias en gestión ágil de proyectos y aplicación de Scrum para optimizar equipos y procesos.",
+  "date": "Octubre 2024",
+  "image": "/assets/ScrumCertificado.jpg",
+  "link": "https://biotarsk.com"
+}
+
+]
