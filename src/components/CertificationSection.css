@@ -31,33 +31,58 @@
   width: 100%;
 }
 
+/* --- IMPORTANTE: quitar transición CSS sobre transform para evitar conflicto con Framer Motion --- */
 .news-grid-dark {
   display: flex;
   gap: 2rem;
-  transition: transform 0.3s ease;
+  /* Quitamos: transition: transform 0.3s ease; */
+  will-change: transform; /* ayuda al navegador a optimizar la animación */
 }
 
 /* Tarjetas */
 .news-card-dark {
   background: linear-gradient(145deg, #1b2432, #0f172a);
   border-radius: 1rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  /* redujimos shadow para perf. */
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
   overflow: hidden;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.18s ease; /* transición más corta y ligera */
   flex: 0 0 calc(33.333% - 1rem);
   min-width: calc(33.333% - 1rem);
   scroll-snap-align: start;
 }
 
+/* Hover menos costoso: transform sólo; shadow más ligero; y desactivar en dispositivos táctiles */
 .news-card-dark:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 18px rgba(255, 123, 0, 0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(255, 123, 0, 0.12);
 }
 
+/* Desactiva hover costoso en touch */
+@media (hover: none) and (pointer: coarse) {
+  .news-card-dark:hover {
+    transform: none;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.35);
+  }
+}
+
+/* Imágenes: reservar espacio para evitar reflow */
 .news-image-dark {
   width: 100%;
-  height: auto;
+  display: block;
   object-fit: cover;
+  /* reservar ratio para evitar layout shift cuando cargan */
+  aspect-ratio: 16 / 9;
+  height: auto; /* mantiene adaptabilidad */
+  max-height: 360px;
+}
+
+/* Si quieres limitar las alturas en móviles para mejor rendimiento */
+@media (max-width: 768px) {
+  .news-image-dark {
+    height: 220px;
+    aspect-ratio: auto 16 / 9;
+  }
 }
 
 .news-content-dark {
@@ -65,6 +90,7 @@
   text-align: left;
 }
 
+/* Tipografía y contenido (sin cambios importantes) */
 .news-content-dark h3 {
   font-size: 1.1rem;
   color: #ffffff;
@@ -88,45 +114,44 @@
   text-decoration: none;
   color: #ff7b00;
   font-weight: 600;
-  transition: color 0.2s ease;
+  transition: color 0.15s ease;
 }
 
 .news-link-dark:hover {
   color: #ff9f40;
 }
 
-/* Flechas de navegación */
+/* Flechas de navegación: ajustadas para no superponerse */
 .slider-arrow-dark {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 123, 0, 0.9);
+  background: rgba(255, 123, 0, 0.95);
   color: white;
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  font-size: 2rem;
+  font-size: 1.75rem;
   cursor: pointer;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.18s ease, background 0.15s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .slider-arrow-dark:hover {
-  background: rgba(255, 159, 64, 1);
-  transform: translateY(-50%) scale(1.1);
+  transform: translateY(-50%) scale(1.05);
 }
 
 .slider-arrow-left {
-  left: -5rem;
+  left: 1rem; /* más cerca y seguro */
 }
 
 .slider-arrow-right {
-  right: -5rem;
+  right: 1rem;
 }
 
 /* Indicadores (dots) */
@@ -134,7 +159,7 @@
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .slider-dot-dark {
@@ -144,17 +169,13 @@
   border: none;
   background: rgba(255, 123, 0, 0.3);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: width 0.2s ease, background 0.2s ease;
 }
 
 .slider-dot-dark.active {
   background: #ff7b00;
-  width: 32px;
+  width: 28px;
   border-radius: 6px;
-}
-
-.slider-dot-dark:hover {
-  background: rgba(255, 123, 0, 0.6);
 }
 
 /* --- 📱 Responsive - Móvil --- */
@@ -169,41 +190,38 @@
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; /* Oculta scroll en Firefox */
+    scrollbar-width: none;
   }
 
   .slider-wrapper-dark::-webkit-scrollbar {
-    display: none; /* Oculta scroll en Chrome/Safari */
+    display: none;
   }
 
   .news-grid-dark {
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     scroll-snap-type: x mandatory;
-    transition: none; /* Elimina salto brusco */
+    transition: none; /* aseguramos que no haya transición CSS aquí */
     padding-bottom: 0.5rem;
+    will-change: auto; /* evita retener demasiados recursos en móvil */
   }
 
   /* Cada tarjeta ocupa casi toda la pantalla */
   .news-card-dark {
-    flex: 0 0 90%;
-    min-width: 90%;
+    flex: 0 0 92%;
+    min-width: 92%;
     scroll-snap-align: center;
-    border-radius: 1rem;
+    border-radius: 0.9rem;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.28);
   }
 
-  /* Asegura que las imágenes se vean completas */
   .news-image-dark {
-    width: 100%;
     height: 220px;
-    object-fit: cover;
-    display: block;
+    aspect-ratio: auto 16 / 9;
   }
 
-  /* Contenido interno */
   .news-content-dark {
-    padding: 1rem;
-    text-align: left;
+    padding: 0.9rem;
   }
 
   /* Ocultar flechas e indicadores en móvil */
@@ -212,7 +230,6 @@
     display: none !important;
   }
 }
-
 
 /* --- 💻 Tablet --- */
 @media (min-width: 769px) and (max-width: 1024px) {

@@ -18,7 +18,7 @@ const CertificationSection: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isReady, setIsReady] = useState(false);
 
-  // 🧠 Detectar si es móvil (con debounce para evitar lag)
+  
   useEffect(() => {
     let resizeTimer: number;
     const checkIsMobile = () => {
@@ -33,7 +33,7 @@ const CertificationSection: React.FC = () => {
     return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
-  // ⚡ Activar carrusel después del montaje
+  
   useEffect(() => {
     const timeout = setTimeout(() => setIsReady(true), 150);
     return () => clearTimeout(timeout);
