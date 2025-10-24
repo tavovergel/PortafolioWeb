@@ -23,16 +23,14 @@
   position: relative;
   max-width: 1600px;
   margin: 0 auto;
-  
 }
 
-/* Wrapper con overflow hidden */
+/* Wrapper con overflow y desplazamiento táctil */
 .slider-wrapper-dark {
   overflow: hidden;
   width: 100%;
 }
 
-/* Grid del slider */
 .news-grid-dark {
   display: flex;
   gap: 2rem;
@@ -48,6 +46,7 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   flex: 0 0 calc(33.333% - 1rem);
   min-width: calc(33.333% - 1rem);
+  scroll-snap-align: start;
 }
 
 .news-card-dark:hover {
@@ -123,11 +122,11 @@
 }
 
 .slider-arrow-left {
-  left: 0;
+  left: -5rem;
 }
 
 .slider-arrow-right {
-  right: 0;
+  right: -5rem;
 }
 
 /* Indicadores (dots) */
@@ -158,36 +157,42 @@
   background: rgba(255, 123, 0, 0.6);
 }
 
-/* Responsive - Móvil */
+/* --- 📱 Responsive - Móvil --- */
 @media (max-width: 768px) {
   .slider-container-dark {
-    padding: 0 3rem;
+    padding: 3rem 1.5rem;
+  }
+
+  /* Activar desplazamiento táctil con scroll */
+  .slider-wrapper-dark {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .news-grid-dark {
+    display: flex;
+    gap: 1.5rem;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .news-card-dark {
     flex: 0 0 100%;
     min-width: 100%;
+    scroll-snap-align: start;
   }
 
+  /* Ocultar flechas en móvil */
   .slider-arrow-dark {
-    width: 25px;
-    height: 25px;
-    font-size: 1.5rem;
-  }
-
-  .slider-arrow-left {
-    left: -5px;
-  }
-
-  .slider-arrow-right {
-    right: -5px;
+    display: none !important;
   }
 }
 
-/* Tablet */
+/* --- 💻 Tablet --- */
 @media (min-width: 769px) and (max-width: 1024px) {
   .news-card-dark {
-    flex: 0 0 calc(50% - 0.75rem);
-    min-width: calc(50% - 0.75rem);
+    flex: 0 0 calc(50% - 0.6rem);
+    min-width: calc(50% - 0.6rem);
   }
 }
