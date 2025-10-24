@@ -160,34 +160,59 @@
 /* --- 📱 Responsive - Móvil --- */
 @media (max-width: 768px) {
   .slider-container-dark {
-    padding: 3rem 1.5rem;
+    padding: 2rem 1rem;
   }
 
-  /* Activar desplazamiento táctil con scroll */
+  /* Activar desplazamiento táctil horizontal */
   .slider-wrapper-dark {
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Oculta scroll en Firefox */
+  }
+
+  .slider-wrapper-dark::-webkit-scrollbar {
+    display: none; /* Oculta scroll en Chrome/Safari */
   }
 
   .news-grid-dark {
     display: flex;
     gap: 1.5rem;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    scroll-snap-type: x mandatory;
+    transition: none; /* Elimina salto brusco */
+    padding-bottom: 0.5rem;
   }
 
+  /* Cada tarjeta ocupa casi toda la pantalla */
   .news-card-dark {
-    flex: 0 0 100%;
-    min-width: 100%;
-    scroll-snap-align: start;
+    flex: 0 0 90%;
+    min-width: 90%;
+    scroll-snap-align: center;
+    border-radius: 1rem;
   }
 
-  /* Ocultar flechas en móvil */
-  .slider-arrow-dark {
+  /* Asegura que las imágenes se vean completas */
+  .news-image-dark {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Contenido interno */
+  .news-content-dark {
+    padding: 1rem;
+    text-align: left;
+  }
+
+  /* Ocultar flechas e indicadores en móvil */
+  .slider-arrow-dark,
+  .slider-dots-dark {
     display: none !important;
   }
 }
+
 
 /* --- 💻 Tablet --- */
 @media (min-width: 769px) and (max-width: 1024px) {

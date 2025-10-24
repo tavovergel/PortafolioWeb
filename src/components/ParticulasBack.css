@@ -169,9 +169,11 @@
   }
 
   .hero-title {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     line-height: 1.3;
     font-weight: 600;
+    text-justify: inter-word;
+    word-break: break-word;
   }
 
   .hero-description {
@@ -183,6 +185,8 @@
     }
   .hero-Analist{
     font-size: 1.2rem;
+    text-justify: inter-word;
+    word-break: break-word;
   }
 
   .profile-image {
